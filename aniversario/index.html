@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario 9/11 💫</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="bg-music" loop>
+        <source src="music/die-with-a-smile.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="stars"></div>
+    <div id="particles"></div>
+
+    <div class="content">
+        <h1>¡FELIZ ANIVERSARIO!<span>9/11</span></h1>
+        <p id="typewriter"></p>
+    </div>
+
+    <div class="slideshow">
+        <img src="img/foto1.jpg" class="active">
+        <img src="img/foto2.jpg">
+        <img src="img/foto3.jpg">
+        <img src="img/foto4.jpg">
+    </div>
+
+    <a href="corazon.html" id="loveButton">Amor mío 💞</a>
+
+    <div id="loveModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>💖 Para ti 💖</h2>
+            <p>
+                Gracias por cada instante, cada sonrisa y cada abrazo.<br>
+                Eres mi certeza en este universo incierto.<br>
+                Te amo más allá de las probabilidades, Amor mío. 💞
+            </p>
+        </div>
+    </div>
+
+    <!-- 🎨 Efectos, animaciones y corazones -->
+    <script src="script.js"></script>
+
+    <!-- 🎵 Control de música (aislado para no causar conflicto) -->
+    <script>
+        (() => {
+            const bgMusic = document.getElementById("bg-music");
+            if (!bgMusic) return;
+
+            let musicStarted = false;
+
+            function startMusic() {
+                if (!musicStarted) {
+                    musicStarted = true;
+                    bgMusic.volume = 0;
+                    bgMusic.play().catch(() => { });
+                    const fade = setInterval(() => {
+                        if (bgMusic.volume < 1) {
+                            bgMusic.volume += 0.05;
+                        } else {
+                            clearInterval(fade);
+                        }
+                    }, 200);
+                }
+            }
+
+            window.addEventListener("click", startMusic);
+            window.addEventListener("touchstart", startMusic);
+        })();
+    </script>
+</body>
+
+</html>
